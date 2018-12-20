@@ -2334,8 +2334,7 @@ class OpMoveView(APIView):
                 current_dir_id = seafile_api.get_dir_id_by_path(repo_id,
                         current_path)
                 if current_dir_id:
-                    current_size = seafile_api.get_dir_size(repo.store_id,
-                            repo.version, current_dir_id)
+                    current_size = 0
 
                 total_size += current_size
 
@@ -2448,8 +2447,7 @@ class OpCopyView(APIView):
             current_dir_id = seafile_api.get_dir_id_by_path(repo_id,
                     current_path)
             if current_dir_id:
-                current_size = seafile_api.get_dir_size(repo.store_id,
-                        repo.version, current_dir_id)
+                current_size = 0
 
             total_size += current_size
 
