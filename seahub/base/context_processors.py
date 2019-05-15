@@ -50,7 +50,22 @@ try:
 except ImportError:
     ENABLE_FILE_SCAN = False
 
+try:
+    from seahub.settings import WINDOWS_CLIENT_PUBLIC_DOWNLOAD_URL, \
+            WINDOWS_CLIENT_VERSION, APPLE_CLIENT_PUBLIC_DOWNLOAD_URL, \
+            APPLE_CLIENT_VERSION, WINDOWS_CLIENT_PUBLIC_DOWNLOAD_URL_EN, \
+            WINDOWS_CLIENT_VERSION_EN, APPLE_CLIENT_PUBLIC_DOWNLOAD_URL_EN, \
+            APPLE_CLIENT_VERSION_EN
 
+except ImportError:
+    WINDOWS_CLIENT_PUBLIC_DOWNLOAD_URL = ''
+    WINDOWS_CLIENT_VERSION = ''
+    APPLE_CLIENT_PUBLIC_DOWNLOAD_URL = ''
+    APPLE_CLIENT_VERSION = ''
+    WINDOWS_CLIENT_PUBLIC_DOWNLOAD_URL_EN = ''
+    WINDOWS_CLIENT_VERSION_EN = ''
+    APPLE_CLIENT_PUBLIC_DOWNLOAD_URL_EN = ''
+    APPLE_CLIENT_VERSION_EN = ''
 def base(request):
     """
     Add seahub base configure to the context.
@@ -128,6 +143,14 @@ def base(request):
         'enable_resumable_fileupload': dj_settings.ENABLE_RESUMABLE_FILEUPLOAD,
         'service_url': get_service_url().rstrip('/'),
         'enable_file_scan': ENABLE_FILE_SCAN,
+        'windows_client_public_download_url': WINDOWS_CLIENT_PUBLIC_DOWNLOAD_URL,
+        'windows_client_version': WINDOWS_CLIENT_VERSION,
+        'apple_client_public_download_url': APPLE_CLIENT_PUBLIC_DOWNLOAD_URL,
+        'apple_client_version': APPLE_CLIENT_VERSION,
+        'windows_client_public_download_url_en': WINDOWS_CLIENT_PUBLIC_DOWNLOAD_URL_EN,
+        'windows_client_version_en': WINDOWS_CLIENT_VERSION_EN,
+        'apple_client_public_download_url_en': APPLE_CLIENT_PUBLIC_DOWNLOAD_URL_EN,
+        'apple_client_version_en': APPLE_CLIENT_VERSION_EN,
     }
 
     if request.user.is_staff:
