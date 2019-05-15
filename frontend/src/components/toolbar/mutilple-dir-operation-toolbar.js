@@ -103,7 +103,7 @@ class MutipleDirOperationToolbar extends React.Component {
     if (dirent.type === 'file') {
       let shareBtn = (this.props.showShareBtn && canGenerateShareLink) ? [SHARE] : [];
 
-      menuList = [...shareBtn, TAGS, RELATED_FILES, 'Divider', HISTORY, 'Divider', OPEN_VIA_CLIENT];
+      menuList = [...shareBtn, TAGS, RELATED_FILES, 'Divider', HISTORY];
       if (!Utils.isMarkdownFile(dirent.name)) {
         menuList.splice(2, 1);
       }

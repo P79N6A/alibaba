@@ -28,12 +28,6 @@ class FileViewTip extends React.Component {
         <div className="file-view-tip">
           {errorMsg}
           <a href="?dl=1" className="btn btn-secondary">{gettext('Download')}</a>
-          {canOpenViaClient && (
-            <React.Fragment>
-              <a className="open-via-client" href={`seafile://openfile?repo_id=${repoID}&path=${encodeURIComponent(filePath)}`}>{gettext('Open via Client')}</a>
-              <p className="tip">{gettext('Please install the desktop client to open file via client.')}</p>
-            </React.Fragment>
-          )}
         </div>
       </div>
     );  
