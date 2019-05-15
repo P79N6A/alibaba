@@ -4,7 +4,7 @@ import { Modal, ModalHeader, ModalBody, TabContent, TabPane, Nav, NavItem, NavLi
 import { gettext, canGenerateShareLink, canGenerateUploadLink } from '../../utils/constants';
 import ShareToUser from './share-to-user';
 import ShareToGroup from './share-to-group';
-import GenerateShareLink from './generate-share-link';
+import GenerateShareLinkAlibaba from './generate-share-link-alibaba';
 import GenerateUploadLink from './generate-upload-link';
 import '../../css/share-link-dialog.css';
 
@@ -59,7 +59,7 @@ class ShareDialog extends React.Component {
       <Fragment>
         <div className="share-dialog-side">
           <Nav pills vertical>
-            {enableShareLink &&
+            {( this.props.itemType === 'file' && enableShareLink) &&
               <NavItem>
                 <NavLink className={activeTab === 'shareLink' ? 'active' : ''} onClick={this.toggle.bind(this, 'shareLink')}>
                   {gettext('Share Link')}
@@ -93,7 +93,7 @@ class ShareDialog extends React.Component {
           <TabContent activeTab={this.state.activeTab}>
             {enableShareLink &&
               <TabPane tabId="shareLink">
-                <GenerateShareLink 
+                <GenerateShareLinkAlibaba
                   itemPath={this.props.itemPath} 
                   repoID={this.props.repoID}
                   closeShareDialog={this.props.toggleDialog} 
@@ -141,7 +141,7 @@ class ShareDialog extends React.Component {
         <div className="share-dialog-main">
           <TabContent activeTab={this.state.activeTab}>
             <TabPane tabId="shareLink">
-              <GenerateShareLink 
+              <GenerateShareLinkAlibaba
                 itemPath={this.props.itemPath} 
                 repoID={this.props.repoID} 
                 closeShareDialog={this.props.toggleDialog}
